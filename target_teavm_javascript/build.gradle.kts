@@ -33,12 +33,22 @@ sourceSets {
 }
 
 dependencies {
-	teavm(teavm.libs.jso)
-	teavm(teavm.libs.jsoApis)
-	compileOnly("org.teavm:teavm-core:0.9.2") // workaround for a few hacks
-	implementation(rootProject)
-	implementation(libs.jorbis)
-	implementation(libs.bundles.common)
+    // Keep your existing teavm(...) lines
+    teavm(teavm.libs.jso)
+    teavm(teavm.libs.jsoApis)
+
+    // Update your compileOnly section to include the Tooling/Backend libs
+    compileOnly("org.teavm:teavm-jso:0.9.2")
+    compileOnly("org.teavm:teavm-jso-apis:0.9.2")
+    
+    // ADD THESE THREE LINES:
+    compileOnly("org.teavm:teavm-platform:0.9.2")
+    compileOnly("org.teavm:teavm-core:0.9.2")
+    compileOnly("org.teavm:teavm-tooling:0.9.2")
+
+    implementation(rootProject)
+    implementation(libs.jorbis)
+    implementation(libs.bundles.common)
 }
 
 val jsFolder = "javascript"

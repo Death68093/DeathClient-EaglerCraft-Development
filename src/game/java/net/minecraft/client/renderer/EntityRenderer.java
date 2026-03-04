@@ -1363,6 +1363,14 @@ public class EntityRenderer implements IResourceManagerReloadListener {
 			this.renderWorldDirections(partialTicks);
 		}
 
+		// [DEATHCLIENT HOOK] 3D Rendering Event
+        if (net.minecraft.deathclient.DeathClient.getInstance() != null) {
+            net.minecraft.deathclient.events.EventRender3D renderEvent = new net.minecraft.deathclient.events.EventRender3D(partialTicks);
+            renderEvent.call();
+        }
+
+        // Make sure we reset colors so we don't accidentally tint the world!
+        net.lax1dude.eaglercraft.v1_8.opengl.GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	private void updateDynamicLightListEagler(float partialTicks) {

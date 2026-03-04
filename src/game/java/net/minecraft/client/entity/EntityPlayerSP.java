@@ -140,11 +140,13 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 	 * Called to update the entity's position/logic.
 	 */
 	public void onUpdate() {
-        // [DEATHCLIENT] Added null check to prevent TeaVM crashes!
-        if (net.minecraft.deathclient.DeathClient.getInstance().getModManager() != null) {
-            net.minecraft.deathclient.DeathClient.getInstance().getModManager().onEvent(new net.minecraft.deathclient.events.EventUpdate());
+        // [DEATHCLIENT HOOK] Event Update (Safely checks Instance AND ModManager!)
+        if (net.minecraft.deathclient.DeathClient.getInstance() != null && net.minecraft.deathclient.DeathClient.getInstance().getModManager() != null) {
+            net.minecraft.deathclient.events.EventUpdate eventUpdate = new net.minecraft.deathclient.events.EventUpdate();
+            eventUpdate.call();
         }
-        
+
+        // --- VANILLA CODE CONTINUES HERE ---
         if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ))) {
             super.onUpdate();
             if (this.isRiding()) {

@@ -322,6 +322,16 @@ public class GuiIngame extends Gui {
 			this.overlayPlayerList.renderPlayerlist(i, scoreboard, scoreobjective1);
 		}
 
+		// [DEATHCLIENT HOOK] Render HUD Mods
+        if (net.minecraft.deathclient.DeathClient.getInstance() != null && net.minecraft.deathclient.DeathClient.getInstance().getModManager() != null) {
+            for (net.minecraft.deathclient.mods.Mod mod : net.minecraft.deathclient.DeathClient.getInstance().getModManager().mods) {
+                if (mod.isToggled() && mod instanceof net.minecraft.deathclient.mods.HudMod) {
+                    // Cast it to HudMod so we can access the draw() method
+                    ((net.minecraft.deathclient.mods.HudMod) mod).draw(); 
+                }
+            }
+        }
+
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
 		GlStateManager.disableLighting();

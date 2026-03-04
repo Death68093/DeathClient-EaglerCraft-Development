@@ -20,6 +20,8 @@ public class ModManager {
         mods.add(new net.minecraft.deathclient.mods.impl.BlockReach());
         mods.add(new net.minecraft.deathclient.mods.impl.CombatReach());
         mods.add(new net.minecraft.deathclient.mods.impl.HUD());
+        // mods.add(new net.minecraft.deathclient.mods.impl.ESP());
+        mods.add(new net.minecraft.deathclient.mods.impl.Scaffold());
     }
 
     // Add this method anywhere inside your ModManager class

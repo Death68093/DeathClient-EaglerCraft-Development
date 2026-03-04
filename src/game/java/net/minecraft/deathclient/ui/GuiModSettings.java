@@ -58,7 +58,11 @@ public class GuiModSettings extends GuiScreen {
                 
                 // Draw Slider Fill (Blue)
                 Gui.drawRect(sliderX, y, sliderX + (int)(sliderWidth * percentage), y + 6, 0xFF00AAFF);
-            }
+            } else if (setting instanceof net.minecraft.deathclient.settings.ModeSetting) {
+                    if (mouseY >= y && mouseY <= y + 10 && mouseX >= this.width / 2 - 50 && mouseX <= this.width / 2 + 50) {
+                        ((net.minecraft.deathclient.settings.ModeSetting) setting).cycle();
+                    }
+                }
             
             y += 40; // Space between settings
         }
@@ -89,8 +93,13 @@ public class GuiModSettings extends GuiScreen {
                         this.dragging = setting;
                         updateSlider((NumberSetting) setting, mouseX); // Snap value to click
                     }
+                } else if (setting instanceof net.minecraft.deathclient.settings.ModeSetting) {
+                    if (mouseY >= y && mouseY <= y + 10 && mouseX >= this.width / 2 - 50 && mouseX <= this.width / 2 + 50) {
+                        ((net.minecraft.deathclient.settings.ModeSetting) setting).cycle();
+                    }
                 }
                 y += 40;
+                
             }
         }
     }

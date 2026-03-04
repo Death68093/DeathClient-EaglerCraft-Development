@@ -37,5 +37,12 @@ public class HUD extends Mod {
                 yOffset += 10;
             }
         }
+        if (this.showWatermark.isEnabled()) {
+            mc.fontRendererObj.drawStringWithShadow("DeathClient", 2, 2, 0xFF0000); 
+            
+            // Draw FPS right below the watermark
+            int currentFPS = net.minecraft.client.Minecraft.getDebugFPS();
+            mc.fontRendererObj.drawStringWithShadow("FPS: " + currentFPS, 2, 12, 0xFFFFFF); // White text
+        }
     }
 }

@@ -12,7 +12,15 @@ public class Mod {
     private Category category;
     private boolean toggled;
     private boolean isCheat; // Used for your Legit/Cracked mode feature
+    private int key; // The LWJGL key code (e.g., Keyboard.KEY_R)
 
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
     public Mod(String name, String description, Category category, boolean isCheat) {
         this.name = name;
         this.description = description;
@@ -32,6 +40,7 @@ public class Mod {
     public void onRender2D(net.minecraft.deathclient.events.EventRender2D event) {
         // Override this in specific mod classes that need to draw on the screen
     }
+    public void onRender3D(net.minecraft.deathclient.events.EventRender3D event) {}
 
     public net.minecraft.deathclient.settings.Setting getSettingByName(String name) {
         for (net.minecraft.deathclient.settings.Setting setting : this.settings) {

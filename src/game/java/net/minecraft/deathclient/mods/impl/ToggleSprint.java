@@ -1,25 +1,41 @@
 package net.minecraft.deathclient.mods.impl;
 
 import net.minecraft.deathclient.events.EventUpdate;
-import net.minecraft.deathclient.mods.Mod;
+import net.minecraft.deathclient.mods.HudMod; // IMPORT HUDMOD
 
-public class ToggleSprint extends Mod {
+public class ToggleSprint extends HudMod { // EXTEND HUDMOD
+
+    public net.minecraft.deathclient.settings.BooleanSetting omniSprint = new net.minecraft.deathclient.settings.BooleanSetting("Omni Sprint", false);
 
     public ToggleSprint() {
-        // False for isCheat, because Toggle Sprint is generally allowed in "Legit" mode
-        super("ToggleSprint", "Keeps you sprinting continuously.", Category.MOVEMENT, false);
+        super("Toggle Sprint", "Keeps you sprinting automatically.", Category.PLAYER); // Removed 'false' if HudMod doesn't use it
+        this.setKey(47); // 'V'
+        this.addSetting(omniSprint);
     }
+
+    // --- NEW HUD METHODS ---
+    @Override
+    public void draw() {
+        mc.fontRendererObj.drawStringWithShadow("[Sprint (Toggled)]", this.x, this.y, 0x00FF00); // Green text
+    }
+
+    @Override
+    public int getWidth() {
+        return mc.fontRendererObj.getStringWidth("[Sprint (Toggled)]");
+    }
+    // -----------------------
 
     @Override
     public void onUpdate(EventUpdate event) {
-        // If the player is moving forward, not colliding with a wall, and not sneaking
-        if (mc.thePlayer.moveForward > 0 && !mc.thePlayer.isCollidedHorizontally && !mc.thePlayer.isSneaking()) {
+        if (mc.thePlayer != null && mc.thePlayer.movementInput.moveForward > 0 && !mc.thePlayer.isSneaking() && !mc.thePlayer.isCollidedHorizontally) {
             mc.thePlayer.setSprinting(true);
         }
     }
-
+    
     @Override
-    protected void onDisable() {
-        mc.thePlayer.setSprinting(false);
+    public void onDisable() {
+        if (mc.thePlayer != null) {
+            mc.thePlayer.setSprinting(false);
+        }
     }
 }
