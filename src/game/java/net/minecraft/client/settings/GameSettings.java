@@ -161,6 +161,9 @@ public class GameSettings {
 			"key.categories.misc");
 	public KeyBinding keyBindFunction = new KeyBinding("key.function", KeyboardConstants.KEY_F, "key.categories.misc");
 	public KeyBinding keyBindClose = new KeyBinding("key.close", KeyboardConstants.KEY_GRAVE, "key.categories.misc");
+	// DeathClient keyBinds
+	public KeyBinding keyBindDCGui = new KeyBinding("DeathClient GUI", KeyboardConstants.KEY_RSHIFT, "key.categories.misc");
+	// Hotbar Keybinds
 	public KeyBinding[] keyBindsHotbar = new KeyBinding[] {
 			new KeyBinding("key.hotbar.1", 2, "key.categories.inventory"),
 			new KeyBinding("key.hotbar.2", 3, "key.categories.inventory"),
@@ -242,7 +245,7 @@ public class GameSettings {
 				this.keyBindSneak, this.keyBindSprint, this.keyBindDrop, this.keyBindInventory, this.keyBindChat,
 				this.keyBindPlayerList, this.keyBindPickBlock, this.keyBindCommand, this.keyBindScreenshot,
 				this.keyBindTogglePerspective, this.keyBindSmoothCamera, this.keyBindZoomCamera, this.keyBindFunction,
-				this.keyBindClose }, this.keyBindsHotbar);
+				this.keyBindClose, keyBindDCGui }, this.keyBindsHotbar);
 		this.difficulty = EnumDifficulty.NORMAL;
 		this.relayTimeout = 4;
 		this.hideJoinCode = false;

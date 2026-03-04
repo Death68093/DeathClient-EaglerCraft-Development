@@ -297,8 +297,20 @@ public class PlayerControllerMP {
 	 * player reach distance = 4F
 	 */
 	public float getBlockReachDistance() {
-		return this.currentGameType.isCreative() ? 5.0F : 4.5F;
-	}
+        // [DEATHCLIENT HOOK] Block Reach
+        if (net.minecraft.deathclient.DeathClient.getInstance().getModManager() != null) {
+            net.minecraft.deathclient.mods.Mod reachMod = net.minecraft.deathclient.DeathClient.getInstance().getModManager().getModByName("Block Reach");
+            if (reachMod != null && reachMod.isToggled()) {
+                net.minecraft.deathclient.settings.NumberSetting dist = (net.minecraft.deathclient.settings.NumberSetting) reachMod.getSettingByName("Distance");
+                if (dist != null) {
+                    return (float) dist.getValue(); // Return the slider value!
+                }
+            }
+        }
+        
+        // Vanilla behavior
+        return this.currentGameType.isCreative() ? 5.0F : 4.5F;
+    }
 
 	public void updateController() {
 		this.syncCurrentPlayItem();

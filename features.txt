@@ -1,0 +1,79 @@
+=== Working features ===
+- Toggle Sprint
+- Fullbright
+- Fly
+- No Fall
+- Mod menu GUI
+- Eagle (aka Legit Scaffold)
+
+=== Planned Features ===
+2. Toggle Sneak
+4. Scaffold
+8. Xray
+9. Highly configurable per-mod settings
+10. Editable HUD
+11. WAILA
+12. No Dynamic FOV
+13. Cracked/Legit modes (Hides/Shows and mods that could be considered cheating)
+14. WASM and JS version support
+15. FPS Boost
+16. Improved mod menu GUI
+- Buttons are red/black and blue when enabled and other theme stuff
+17. Armor hud
+18. FPS/Ping viewer
+19. Scoreboard toggle
+20. TNT Timer
+21. Reach Display
+22. Compass
+23. Player Esp
+- Highly configurable
+24. Block ESP
+- Even more configurable
+25. ESP (for mobs and whatnot)
+26. Trajectories (show arrow/other projectile directions as a line)
+27. Per-mod Keybinds
+- And also whether to toggle or hold to activate
+==========================
+
+=== Suggested Mod Settings ===
+1. Eagle
+- "if" conditions
+-- While holding block
+-- While sneaking
+--- Any/all toggle
+- modes
+-- Auto place?
+-- Rotate to place?
+2. Player ESP
+- Who
+-- Specific Player
+-- Enemies (e.g bedwars and whatnot)
+-- Everyone
+- Color
+3. Block ESP
+- What
+-- Specific blocks
+-- Mode
+--- Whitelist or Blacklist
+- Color
+4. ESP
+- What
+-- Specific Mob or item etc..
+- Mode
+-- Whitelist or blacklist
+5. KillAura/Aimbot
+- Distance
+-- Blocks to activate
+6. KillAura
+- Reach
+-- How far to attack (basically reach)
+
+
+==============================
+
+=== Details ===
+Eaglercraft 1.8.8
+Client Version: 1.0.1
+Creator: Death68093
+Client Name: DeathClient
+===============

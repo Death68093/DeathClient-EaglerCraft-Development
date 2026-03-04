@@ -562,6 +562,8 @@ public class Minecraft implements IThreadListener {
 			;
 		while (Touch.next())
 			;
+		// Boot up DeathClient
+		net.minecraft.deathclient.DeathClient.getInstance().startClient();
 	}
 
 	private void registerMetadataSerializers() {
@@ -1168,6 +1170,7 @@ public class Minecraft implements IThreadListener {
 	 * Runs the current tick.
 	 */
 	public void runTick() throws IOException {
+		
 		if (this.rightClickDelayTimer > 0) {
 			--this.rightClickDelayTimer;
 		}
@@ -1413,6 +1416,10 @@ public class Minecraft implements IThreadListener {
 				KeyBinding.setKeyBindState(k, Keyboard.getEventKeyState());
 				if (Keyboard.getEventKeyState()) {
 					KeyBinding.onTick(k);
+				}
+				// Open DeathClient Mod Menu if the custom keybind is pressed
+				if (this.gameSettings.keyBindDCGui.isPressed()) {
+					this.displayGuiScreen(new net.minecraft.deathclient.ui.GuiModMenu());
 				}
 
 				if (this.debugCrashKeyPressTime > 0L) {

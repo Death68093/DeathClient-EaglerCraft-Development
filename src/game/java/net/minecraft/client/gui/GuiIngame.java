@@ -326,6 +326,11 @@ public class GuiIngame extends Gui {
 
 		GlStateManager.disableLighting();
 		GlStateManager.enableAlpha();
+		// [DEATHCLIENT HOOK] 2D Rendering
+        if (net.minecraft.deathclient.DeathClient.getInstance() != null) {
+            net.minecraft.deathclient.events.EventRender2D event = new net.minecraft.deathclient.events.EventRender2D();
+            event.call();
+        }
 	}
 
 	public void renderGameOverlayCrosshairs(int scaledResWidth, int scaledResHeight) {

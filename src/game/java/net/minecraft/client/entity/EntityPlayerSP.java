@@ -1,5 +1,6 @@
 package net.minecraft.client.entity;
 
+import net.minecraft.deathclient.*;
 import net.lax1dude.eaglercraft.v1_8.EaglercraftVersion;
 import net.lax1dude.eaglercraft.v1_8.sp.lan.LANClientNetworkManager;
 import net.lax1dude.eaglercraft.v1_8.sp.socket.ClientIntegratedServerNetworkManager;
@@ -139,19 +140,23 @@ public class EntityPlayerSP extends AbstractClientPlayer {
 	 * Called to update the entity's position/logic.
 	 */
 	public void onUpdate() {
-		if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ))) {
-			super.onUpdate();
-			if (this.isRiding()) {
-				this.sendQueue.addToSendQueue(
-						new C03PacketPlayer.C05PacketPlayerLook(this.rotationYaw, this.rotationPitch, this.onGround));
-				this.sendQueue.addToSendQueue(new C0CPacketInput(this.moveStrafing, this.moveForward,
-						this.movementInput.jump, this.movementInput.sneak));
-			} else {
-				this.onUpdateWalkingPlayer();
-			}
-
-		}
-	}
+        // [DEATHCLIENT] Added null check to prevent TeaVM crashes!
+        if (net.minecraft.deathclient.DeathClient.getInstance().getModManager() != null) {
+            net.minecraft.deathclient.DeathClient.getInstance().getModManager().onEvent(new net.minecraft.deathclient.events.EventUpdate());
+        }
+        
+        if (this.worldObj.isBlockLoaded(new BlockPos(this.posX, 0.0D, this.posZ))) {
+            super.onUpdate();
+            if (this.isRiding()) {
+                this.sendQueue.addToSendQueue(
+                        new C03PacketPlayer.C05PacketPlayerLook(this.rotationYaw, this.rotationPitch, this.onGround));
+                this.sendQueue.addToSendQueue(new C0CPacketInput(this.moveStrafing, this.moveForward,
+                        this.movementInput.jump, this.movementInput.sneak));
+            } else {
+                this.onUpdateWalkingPlayer();
+            }
+        }
+    }
 
 	/**+
 	 * called every tick when the player is on foot. Performs all
