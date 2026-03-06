@@ -44,6 +44,14 @@ var relayId = Math.floor(Math.random() * 3);
 window.eaglercraftXOpts = {
 	container: "game_frame",
 	worldsDB: "worlds",
+	servers: [
+		{ addr: "wss://burstmc.eagler.host", name: "BurstMC Server1" },
+		{ addr: "wss://burstmc.biologyisfun.site", name: "BurstMC Server2" },
+		{ addr: "wss://wanderwood.thatonebot.site", name: "WanderWood" },
+		{ addr: "complex.lat", name: "Complex" },
+		{ addr: "xena.wtf", name: "Xena (Complex)" },
+		
+	],
 	relays: [
 		{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
 		{ addr: "wss://relay.lax1dude.net/", comment: "lax1dude relay #2", primary: relayId == 1 },

@@ -23,7 +23,6 @@ import net.lax1dude.eaglercraft.v1_8.sp.server.internal.teavm.WorkerMain;
 public class MainClass {
 
 	public static void main(String[] args) {
-		net.minecraft.deathclient.api.JSBridge.init();
 		setStackTraceLimit();
 		if(args.length == 1) {
 			if("_worker_process_".equalsIgnoreCase(args[0])) {

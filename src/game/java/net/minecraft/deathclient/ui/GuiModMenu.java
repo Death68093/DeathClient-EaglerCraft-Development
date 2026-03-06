@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.deathclient.DeathClient;
 import net.minecraft.deathclient.mods.Mod;
+import net.lax1dude.eaglercraft.v1_8.Keyboard;
 
 public class GuiModMenu extends GuiScreen {
 
@@ -95,8 +96,8 @@ public class GuiModMenu extends GuiScreen {
 
             // Keybind (if set)
             if (mod.getKey() != 0) {
-                String keyStr = "§8[" + org.lwjgl.input.Keyboard.getKeyName(mod.getKey()) + "]";
-                int kw = this.fontRendererObj.getStringWidth("[" + org.lwjgl.input.Keyboard.getKeyName(mod.getKey()) + "]");
+                String keyStr = "§8[" + Keyboard.getKeyName(mod.getKey()) + "]";
+                int kw = this.fontRendererObj.getStringWidth("[" + Keyboard.getKeyName(mod.getKey()) + "]");
                 this.fontRendererObj.drawStringWithShadow(keyStr, contentX + contentW - kw - 36, my + 6, 0xFFFFFF);
             }
 

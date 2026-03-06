@@ -1176,7 +1176,6 @@ public class Minecraft implements IThreadListener {
 		}
 
 		RateLimitTracker.tick();
-		net.minecraft.deathclient.api.BridgeHelper.update();
 		boolean isHostingLAN = LANServerController.isHostingLAN();
 		this.isGamePaused = !isHostingLAN && this.isSingleplayer() && this.theWorld != null && this.thePlayer != null
 				&& this.currentScreen != null && this.currentScreen.doesGuiPauseGame();

@@ -2,6 +2,7 @@ package net.minecraft.deathclient.mods.impl;
 
 import net.minecraft.deathclient.events.EventUpdate;
 import net.minecraft.deathclient.mods.HudMod; // IMPORT HUDMOD
+import net.lax1dude.eaglercraft.v1_8.internal.KeyboardConstants;
 
 public class ToggleSprint extends HudMod { // EXTEND HUDMOD
 
@@ -9,7 +10,7 @@ public class ToggleSprint extends HudMod { // EXTEND HUDMOD
 
     public ToggleSprint() {
         super("Toggle Sprint", "Keeps you sprinting automatically.", Category.PLAYER); // Removed 'false' if HudMod doesn't use it
-        this.setKey(47); // 'V'
+        this.setKey(KeyboardConstants.KEY_V);
         this.addSetting(omniSprint);
     }
 
